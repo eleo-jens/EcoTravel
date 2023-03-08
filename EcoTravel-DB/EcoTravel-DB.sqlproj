@@ -70,6 +70,10 @@
     <Build Include="Tables\Disponibilite.sql" />
     <Build Include="Tables\Photo.sql" />
     <Build Include="Stored Procedures\SP_Logements_Mois.sql" />
+    <Build Include="Stored Procedures\SP_Logements_2_Dates.sql" />
+    <Build Include="Stored Procedures\SP_Client_Add.sql" />
+    <Build Include="Stored Procedures\SP_Client_Check.sql" />
+    <Build Include="Stored Procedures\SP_Reservations_Client_En_Cours.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EcoTravel-DB.refactorlog" />

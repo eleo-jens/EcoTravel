@@ -6,10 +6,12 @@
 	[pays] CHAR(2) NOT NULL, 
 	[email] NVARCHAR(255) NOT NULL,
 	[telephone] VARCHAR(20) NOT NULL,
-	[pass] VARBINARY(32) NOT NULL,
+	[password] VARBINARY(32) NOT NULL,
     CONSTRAINT [PK_Client] PRIMARY KEY ([idClient]),
 	CONSTRAINT [UK_Client_email] UNIQUE ([email]),
 	CONSTRAINT [UK_Client_telephone] UNIQUE ([telephone]),
+	CONSTRAINT [CK_Client_email] CHECK ([email] LIKE ('%__@__%.__%')),
+	CONSTRAINT [CK_Client_telephone] CHECK (ISNUMERIC(REPLACE(REPLACE(REPLACE([telephone], '+', '00'), '/', ''), '.', '')) = 1),
 	CONSTRAINT [CK_Client_nom] CHECK (LEN(nom)>=1), 
     CONSTRAINT [CK_Client_prenom] CHECK (LEN(prenom)>=1)
 	

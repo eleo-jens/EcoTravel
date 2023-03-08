@@ -77,4 +77,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="commentaire" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="a6c9b2b7-e26c-4a4f-9fbc-d76eec43ea90" ChangeDateTime="03/08/2023 15:23:20">
+    <Property Name="ElementName" Value="[dbo].[Client].[pass]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Client]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="password" />
+  </Operation>
 </Operations>
