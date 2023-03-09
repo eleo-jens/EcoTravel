@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[SP_Client_Check]
-	@param1 int = 0,
-	@param2 int
+	@email NVARCHAR(255),
+	@password NVARCHAR(32)
 AS
-	SELECT @param1, @param2
-RETURN 0
+	SELECT [idClient] FROM [Client]
+	WHERE [email] = @email AND [password] = HASHBYTES('SHA2_256', @password)

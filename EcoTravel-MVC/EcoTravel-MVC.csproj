@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>EcoTravel_MVC</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EcoTravel-BLL\EcoTravel-BLL.csproj" />
+    <ProjectReference Include="..\EcoTravel-Common\EcoTravel-Common.csproj" />
+    <ProjectReference Include="..\EcoTravel-DAL\EcoTravel-DAL.csproj" />
+  </ItemGroup>
+
+</Project>

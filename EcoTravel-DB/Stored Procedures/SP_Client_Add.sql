@@ -8,4 +8,4 @@
 AS
 	INSERT INTO [Client] ([email], [password], [nom], [prenom], [pays], [telephone])
 	OUTPUT [inserted].[idClient]
-	VALUES (@email, HASHBYTES('SHA_512', @password), @nom, @prenom, @pays, @telephone)
+	VALUES (@email, HASHBYTES('SHA2_256', @password), @nom, @prenom, @pays, @telephone)
