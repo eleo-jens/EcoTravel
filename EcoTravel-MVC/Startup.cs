@@ -30,6 +30,8 @@ namespace EcoTravel_MVC
             #region Injection de dépendances
             services.AddScoped<IClientRepository<DO.Client, int>, DS.ClientService>();
             services.AddScoped<IClientRepository<BO.Client, int>, BS.ClientService>();
+
+            services.AddScoped<IProprietaireRepository<DO.Proprietaire, int>, DS.ProprietaireService>();
             #endregion
 
             services.AddControllersWithViews();

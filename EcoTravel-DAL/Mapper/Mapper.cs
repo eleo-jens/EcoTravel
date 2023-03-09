@@ -28,5 +28,24 @@ namespace EcoTravel_DAL.Mapper
         }
 
         #endregion
+
+        #region Proprietaire 
+
+        public static Proprietaire ToProprietaire(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new Proprietaire()
+            {
+                idProprietaire = (int)record[nameof(Proprietaire.idProprietaire)],
+                nom = (string)record[nameof(Proprietaire.nom)],
+                prenom = (string)record[nameof(Proprietaire.prenom)],
+                email = (string)record[nameof(Proprietaire.email)],
+                pays = (string)record[nameof(Proprietaire.pays)],
+                telephone = (string)record[nameof(Proprietaire.telephone)],
+                password = "********"
+            };
+        }
+
+        #endregion
     }
 }
