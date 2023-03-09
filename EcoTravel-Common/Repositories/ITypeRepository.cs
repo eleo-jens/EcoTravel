@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EcoTravel_BLL.Entities
+namespace EcoTravel_Common.Repositories
 {
-    public class Proprietaire: Client, IProprietaire
+    public interface ITypeRepository<TEntity, TId> : IGetRepository<TEntity, TId> where TEntity: IType
     {
-        public IEnumerable<Logement> logements { get; set; }
     }
 }

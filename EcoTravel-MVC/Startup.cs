@@ -32,6 +32,14 @@ namespace EcoTravel_MVC
             services.AddScoped<IClientRepository<BO.Client, int>, BS.ClientService>();
 
             services.AddScoped<IProprietaireRepository<DO.Proprietaire, int>, DS.ProprietaireService>();
+            //services.AddScoped<IProprietaireRepository<BO.Proprietaire, int>, BS.ProprietaireService>();
+
+            services.AddScoped<ILogementRepository<DO.Logement, int>, DS.LogementService>();
+            services.AddScoped<ILogementRepository<BO.Logement, int>, BS.LogementService>();
+
+            //services.AddScoped<ITypeRepository<DO.Type, int>, DS.TypeService>();
+            //services.AddScoped<ITypeRepository<BO.Type, int>, BS.TypeService>();
+
             #endregion
 
             services.AddControllersWithViews();

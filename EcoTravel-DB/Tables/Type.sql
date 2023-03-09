@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Type]
 (
-	[Type] INT IDENTITY NOT NULL,
+	[idType] INT IDENTITY NOT NULL,
 	[nom] NVARCHAR(50) NOT NULL UNIQUE, 
-    CONSTRAINT [PK_Type] PRIMARY KEY ([Type])
+    CONSTRAINT [PK_Type] PRIMARY KEY ([idType])
 )

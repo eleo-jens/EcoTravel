@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EcoTravel_BLL.Entities
+namespace EcoTravel_DAL.Entities
 {
-    public class Proprietaire: Client, IProprietaire
+    public class Type: IType
     {
-        public IEnumerable<Logement> logements { get; set; }
+        public int idType { get; set; }
+        public string nom { get; set; }
     }
 }
