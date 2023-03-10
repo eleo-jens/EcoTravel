@@ -29,6 +29,7 @@ namespace EcoTravel_MVC.Controllers
         // GET: ProprietaireController/Details/5
         public ActionResult Details(int id)
         {
+            //ATTENTION: erreur avec la vue partielle qui se déclenche 
             ProprietaireDetails model = new ProprietaireDetails();
             model.logements = _logementService.GetByProprietaire(id).Select(e => e.ToListItem());
             return View(model);
