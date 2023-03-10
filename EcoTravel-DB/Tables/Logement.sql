@@ -26,13 +26,13 @@
     [numero] NVARCHAR(10) NOT NULL, 
     [codePostal] NVARCHAR(10) NOT NULL, 
     [pays] CHAR(2) NOT NULL, 
-    [dateAjout] DATE NOT NULL DEFAULT GETDATE(),
+    [dateAjout] DATE NULL DEFAULT GETDATE(),
     [idCategorie] INT NOT NULL, 
     [idProprietaire] INT NOT NULL, 
     CONSTRAINT [PK_Logement] PRIMARY KEY ([idLogement]), 
     CONSTRAINT [CK_Logement_codePostal] CHECK (LEN(codePostal)>=4),
     CONSTRAINT [CK_Logement_rue] CHECK (LEN(rue)>=1),
-    CONSTRAINT [CK_Logement_dateAjout] CHECK (dateAjout >= GETDATE()), 
+    --CONSTRAINT [CK_Logement_dateAjout] CHECK (dateAjout >= GETDATE()), 
     CONSTRAINT [FK_Logement_Categorie] FOREIGN KEY ([idCategorie]) REFERENCES [Categorie]([idCategorie]), 
     CONSTRAINT [FK_Logement_Proprietaire] FOREIGN KEY ([idProprietaire]) REFERENCES [Proprietaire]([idProprietaire])
 )

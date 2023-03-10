@@ -1,0 +1,168 @@
+﻿@model EcoTravel_MVC.Models.ModelViews.Logement.LogementDetails
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>LogementDetails</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descriptionCourte)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descriptionCourte)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.descriptionLongue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.descriptionLongue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nbChambres)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nbChambres)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nbPieces)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nbPieces)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nbSDB)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nbSDB)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nbWC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nbWC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.balcon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.balcon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.airco)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.airco)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.wifi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.wifi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.minibar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.minibar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.animauxAdmis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.animauxAdmis)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.piscine)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.piscine)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.parking)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.parking)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.voiturier)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.voiturier)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.roomService)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.roomService)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.spa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.spa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.prixNuitPersonne)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.prixNuitPersonne)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.capacite)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.capacite)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.longitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.longitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.latitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.latitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.numero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.numero)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pays)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pays)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -81,6 +81,20 @@ namespace EcoTravel_MVC.Handlers
                 idProprietaire = entity.idProprietaire
             };
         }
+
+
+        public static LogementListItems ToListItem(this Logement entity)
+        {
+            if (entity is null) return null;
+            return new LogementListItems()
+            {
+                idLogement = entity.idLogement,
+                nom = entity.nom, 
+                prixNuitPersonne = entity.prixNuitPersonne,
+                capacite = entity.capacite,
+                descriptionCourte = entity.descriptionCourte
+            };
+        }
         #endregion
 
         #region Categorie

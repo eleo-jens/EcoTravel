@@ -77,18 +77,18 @@ namespace EcoTravel_DAL.Services
             {
                 using (SqlCommand command = cnx.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO [Logement] ([idLogement], [nom], [descriptionCourte], 
+                    command.CommandText = @"INSERT INTO [Logement] ([nom], [descriptionCourte], 
                     [descriptionLongue], [nbChambres], [nbPieces], [nbSDB], [nbWC], [balcon], [airco],
                     [wifi], [minibar], [animauxAdmis], [piscine], [parking], [voiturier],
                     [roomService], [spa], [prixNuitPersonne], [capacite], [longitude],
-                    [latitude], [rue], [numero], [codePostal], [pays], [dateAjout]) 
-                    VALUES (@idLogement, @nom, @descriptionCourte, 
+                    [latitude], [rue], [numero], [codePostal], [pays], [idCategorie], [idProprietaire]) 
+                    OUTPUT [Inserted].[idLogement]
+                    VALUES (@nom, @descriptionCourte, 
                     @descriptionLongue, @nbChambres, @nbPieces, @nbSDB, @nbWC, @balcon, @airco,
                     @wifi, @minibar, @animauxAdmis, @piscine, @parking, @voiturier,
                     @roomService, @spa, @prixNuitPersonne, @capacite, @longitude,
-                    @latitude, @rue, @numero, @codePostal, @pays, @dateAjout)";
+                    @latitude, @rue, @numero, @codePostal, @pays, @idCategorie, @idProprietaire)";
 
-                    command.Parameters.AddWithValue("idLogement", entity.idLogement);
                     command.Parameters.AddWithValue("nom", entity.nom);
                     command.Parameters.AddWithValue("descriptionCourte", entity.descriptionCourte);
                     command.Parameters.AddWithValue("descriptionLongue", entity.descriptionLongue);
@@ -114,7 +114,8 @@ namespace EcoTravel_DAL.Services
                     command.Parameters.AddWithValue("numero", entity.numero);
                     command.Parameters.AddWithValue("codePostal", entity.codePostal);
                     command.Parameters.AddWithValue("pays", entity.pays);
-                    command.Parameters.AddWithValue("dateAjout", entity.dateAjout);
+                    command.Parameters.AddWithValue("idCategorie", entity.idCategorie);
+                    command.Parameters.AddWithValue("idProprietaire", entity.idProprietaire);
 
                     cnx.Open();
 

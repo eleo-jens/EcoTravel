@@ -48,7 +48,7 @@ namespace EcoTravel_DAL.Services
             {
                 using (SqlCommand command = cnx.CreateCommand())
                 {
-                    command.CommandText = @"INSERT INTO [Proprietaire] ([idProprietaire]) VALUES (@idClient)";
+                    command.CommandText = @"INSERT INTO [Proprietaire] ([idProprietaire]) OUTPUT [Inserted].[idProprietaire] VALUES (@idClient)";
 
                     command.Parameters.AddWithValue("idClient", entity.idProprietaire);
 

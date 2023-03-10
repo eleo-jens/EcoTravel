@@ -62,13 +62,26 @@ namespace EcoTravel_MVC.Controllers
                 {
                     int idUser = _sessionManager.CurrentUser.idUser;
                     Client client = _clientService.Get(idUser);
-                    //je dois créer un nouveau Proprietaire: appel service proprio insert (avec les infos du client)
-                    _proprietaireService.Insert(client);
+                    // Création d'un nouveau proprietaire: créer un objet proprietaire (mapper ou constructeur) et faire appel au service proprio insert 
+                    Proprietaire entity = new Proprietaire()
+                    {
+                        idClient = client.idClient,
+                        nom = client.nom,
+                        prenom = client.prenom,
+                        pays = client.pays,
+                        telephone = client.telephone,
+                        email = client.email,
+                        password = client.password
+                    };
+                    _proprietaireService.Insert(entity);
                     _sessionManager.CurrentUser.role = "Proprietaire";
                 }
                 form.idProprietaire = _sessionManager.CurrentUser.idUser;
                 int id = _service.Insert(form.ToBLL());
-                return RedirectToAction("Details", "Logement", new { id = id });
+
+                return RedirectToAction("Details", "Client", new { id = _sessionManager.CurrentUser.idUser });
+                // Je voulais renvoyer vers la détail du compte du proprietaire avec inclus une liste de ses logements en vue partielle, mais la vue partielle _LogementList génère des erreurs
+                //return RedirectToAction("Details", "Proprietaire", new { id = _sessionManager.CurrentUser.idUser });
             }
         }
 
