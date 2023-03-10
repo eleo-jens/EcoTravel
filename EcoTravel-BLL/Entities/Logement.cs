@@ -36,7 +36,7 @@ namespace EcoTravel_BLL.Entities
         public string codePostal { get; set; }
         public string pays { get; set; }
         public DateTime dateAjout { get; set; }
-        public int idType { get; set; }
+        public int idCategorie { get; set; }
         public int idProprietaire { get; set; }
     }
 }

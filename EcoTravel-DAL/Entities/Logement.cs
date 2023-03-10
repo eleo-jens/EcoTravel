@@ -61,7 +61,7 @@ namespace EcoTravel_DAL.Entities
         public string pays { get; set; }
         // DATE
         public DateTime dateAjout { get; set; }
-        public int idType { get; set; }
+        public int idCategorie{ get; set; }
         public int idProprietaire { get; set; }
     }
 }

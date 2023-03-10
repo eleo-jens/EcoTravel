@@ -59,6 +59,7 @@
     <Folder Include="Tables" />
     <Folder Include="Views" />
     <Folder Include="Stored Procedures" />
+    <Folder Include="Script" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Client.sql" />
@@ -66,7 +67,7 @@
     <Build Include="Tables\Avis.sql" />
     <Build Include="Tables\Reservation.sql" />
     <Build Include="Tables\Logement.sql" />
-    <Build Include="Tables\Type.sql" />
+    <Build Include="Tables\Categorie.sql" />
     <Build Include="Tables\Disponibilite.sql" />
     <Build Include="Tables\Photo.sql" />
     <Build Include="Stored Procedures\SP_Logements_Mois.sql" />
@@ -83,7 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="EcoTravel-DB.publish.xml" />
-    <None Include="EcoTravel-DB_1.publish.xml" />
-    <None Include="EcoTravel-DB_2.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script\Script.PostDeployment_Categorie.sql" />
   </ItemGroup>
 </Project>

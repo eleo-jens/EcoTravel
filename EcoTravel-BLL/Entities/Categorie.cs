@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EcoTravel_Common.Repositories
+namespace EcoTravel_BLL.Entities
 {
-    public interface ITypeRepository<TEntity, TId> : IGetRepository<TEntity, TId> where TEntity: IType
+    public class Categorie: ICategorie
     {
+        public int idCategorie { get; set; }
+        public string nom { get; set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject SessionManager sessionManager;
+@using EcoTravel_MVC.Handlers;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,9 +24,37 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @if (sessionManager.CurrentUser is null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Create">Sign Up</a>
+                            </li>
+                        }
+                        else
+                        {
+                            // ATTENTION: ici je dois ajouter l'id pour diriger l'action details correctment
+                            if (sessionManager.CurrentUser.role == "Client")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Details" asp-route-Id="@sessionManager.CurrentUser.idUser">Mon Compte</a>
+                                </li>
+                            }
+                            else if (sessionManager.CurrentUser.role == "Proprietaire")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Proprietaire" asp-action="Details" asp-route-Id="@sessionManager.CurrentUser.idUser">Mon Compte</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Logement" asp-action="Create">Ajouter un logement</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

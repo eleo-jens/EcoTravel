@@ -82,8 +82,20 @@ namespace EcoTravel_DAL.Mapper
                 codePostal = (string)record[nameof(Logement.codePostal)],
                 pays = (string)record[nameof(Logement.codePostal)],
                 dateAjout = (DateTime)record[nameof(Logement.dateAjout)],
-                idType = (int)record[nameof(Logement.idType)],
+                idCategorie = (int)record[nameof(Logement.idCategorie)],
                 idProprietaire = (int)record[nameof(Logement.idProprietaire)]
+            };
+        }
+        #endregion
+
+        #region Categorie
+        public static Entities.Categorie ToCategorie(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new Entities.Categorie()
+            {
+                idCategorie = (int)record[nameof(Entities.Categorie.idCategorie)],
+                nom = (string)record[nameof(Entities.Categorie.nom)]
             };
         }
         #endregion

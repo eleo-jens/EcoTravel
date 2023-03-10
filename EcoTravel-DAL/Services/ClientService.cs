@@ -57,5 +57,24 @@ namespace EcoTravel_DAL.Services
                 }
             }
         }
+
+        public int? CheckPassword(string email, string password)
+        {
+            using (SqlConnection cnx = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand command = cnx.CreateCommand())
+                {
+                    command.CommandText = "SP_Client_Check";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("email", email);
+                    command.Parameters.AddWithValue("password", password);
+
+                    cnx.Open();
+
+                    object result = command.ExecuteScalar();
+                    return (result is DBNull) ? null : (int?)result;
+                }
+            }
+        }
     }
 }

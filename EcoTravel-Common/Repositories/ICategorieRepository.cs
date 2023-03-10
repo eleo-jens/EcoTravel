@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace EcoTravel_Common.Repositories
 {
-    public interface IClientRepository<TEntity, TId>: IAuthRepository, IInsertRepository<TEntity, TId> where TEntity : IClient
+    public interface ICategorieRepository<TEntity, TId> : IGetRepository<TEntity, TId> where TEntity: ICategorie
     {
-        TEntity Get(TId id);
     }
 }

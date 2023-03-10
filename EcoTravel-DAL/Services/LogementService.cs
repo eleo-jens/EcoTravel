@@ -196,5 +196,26 @@ namespace EcoTravel_DAL.Services
                 }
             }
         }
+
+        public IEnumerable<Logement> GetByCategorie(int idCategorie)
+        {
+            using (SqlConnection cnx = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand command = cnx.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM [Logement] WHERE [idCategorie] = @id";
+                    command.Parameters.AddWithValue("id", idCategorie);
+                    cnx.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToLogement();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

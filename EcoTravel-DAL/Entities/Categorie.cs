@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace EcoTravel_DAL.Entities
 {
-    public class Type: IType
+    // A Faire: changer le nom de l'entité Type en Catégories car être confondu avec System.Type ! 
+    public class Categorie: ICategorie
     {
-        public int idType { get; set; }
+        public int idCategorie { get; set; }
         public string nom { get; set; }
     }
 }

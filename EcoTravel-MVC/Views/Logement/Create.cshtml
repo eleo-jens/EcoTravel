@@ -1,0 +1,166 @@
+﻿@inject ICategorieRepository<Categorie, int> categorieService;
+@using EcoTravel_BLL.Entities;
+@using EcoTravel_Common.Repositories;
+@using EcoTravel_MVC.Handlers;
+@using EcoTravel_MVC.Models.ModelViews.Categorie;
+
+@model EcoTravel_MVC.Models.ModelViews.Logement.LogementCreateForm
+
+@{
+    ViewData["Title"] = "Create";
+    IEnumerable<CategorieDetails> categories = categorieService.Get().Select(e => e.ToDetails());
+}
+
+<h1>Create</h1>
+
+<h4>LogementCreateForm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nom" class="control-label"></label>
+                <input asp-for="nom" class="form-control" />
+                <span asp-validation-for="nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descriptionCourte" class="control-label"></label>
+                <input asp-for="descriptionCourte" class="form-control" />
+                <span asp-validation-for="descriptionCourte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descriptionLongue" class="control-label"></label>
+                <input asp-for="descriptionLongue" class="form-control" />
+                <span asp-validation-for="descriptionLongue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nbChambres" class="control-label"></label>
+                <input asp-for="nbChambres" class="form-control" />
+                <span asp-validation-for="nbChambres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nbPieces" class="control-label"></label>
+                <input asp-for="nbPieces" class="form-control" />
+                <span asp-validation-for="nbPieces" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nbSDB" class="control-label"></label>
+                <input asp-for="nbSDB" class="form-control" />
+                <span asp-validation-for="nbSDB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nbWC" class="control-label"></label>
+                <input asp-for="nbWC" class="form-control" />
+                <span asp-validation-for="nbWC" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="balcon" /> @Html.DisplayNameFor(model => model.balcon)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="airco" /> @Html.DisplayNameFor(model => model.airco)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="wifi" /> @Html.DisplayNameFor(model => model.wifi)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="minibar" /> @Html.DisplayNameFor(model => model.minibar)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="animauxAdmis" /> @Html.DisplayNameFor(model => model.animauxAdmis)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="piscine" /> @Html.DisplayNameFor(model => model.piscine)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="parking" /> @Html.DisplayNameFor(model => model.parking)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="voiturier" /> @Html.DisplayNameFor(model => model.voiturier)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="roomService" /> @Html.DisplayNameFor(model => model.roomService)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="spa" /> @Html.DisplayNameFor(model => model.spa)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="prixNuitPersonne" class="control-label"></label>
+                <input asp-for="prixNuitPersonne" class="form-control" />
+                <span asp-validation-for="prixNuitPersonne" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="capacite" class="control-label"></label>
+                <input asp-for="capacite" class="form-control" />
+                <span asp-validation-for="capacite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="longitude" class="control-label"></label>
+                <input asp-for="longitude" class="form-control" />
+                <span asp-validation-for="longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="latitude" class="control-label"></label>
+                <input asp-for="latitude" class="form-control" />
+                <span asp-validation-for="latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rue" class="control-label"></label>
+                <input asp-for="rue" class="form-control" />
+                <span asp-validation-for="rue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="numero" class="control-label"></label>
+                <input asp-for="numero" class="form-control" />
+                <span asp-validation-for="numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="codePostal" class="control-label"></label>
+                <input asp-for="codePostal" class="form-control" />
+                <span asp-validation-for="codePostal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pays" class="control-label"></label>
+                <input asp-for="pays" class="form-control" />
+                <span asp-validation-for="pays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label required="required">Catégorie de logement*: </label>
+                @Html.DropDownListFor(model => model.idCategorie,
+             categories.Select(e => new SelectListItem { Text = e.nom, Value = e.idCategorie.ToString() }),
+             "Selectionnez une catégorie (obligatoire)", new { required = "required" })
+            </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

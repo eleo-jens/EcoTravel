@@ -26,12 +26,16 @@ namespace EcoTravel_BLL.Services
             Proprietaire entity = _repository.Get(id).ToBLL();
             entity.logements = _logement_repository.GetByProprietaire(id).Select(e => e.ToBLL());
             return entity;
-            
         }
 
         public int Insert(Proprietaire entity)
         {
             return _repository.Insert(entity.ToDAL());
+        }
+
+        public int? CheckPassword(string email, string password)
+        {
+            return _repository.CheckPassword(email, password);
         }
     }
 }

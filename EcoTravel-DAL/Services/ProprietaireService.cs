@@ -41,6 +41,7 @@ namespace EcoTravel_DAL.Services
             }
         }
 
+        // Autre solution: public int Insert (int idProprietaire)
         public int Insert(Proprietaire entity)
         {
             using (SqlConnection cnx = new SqlConnection(ConnectionString))
@@ -48,13 +49,31 @@ namespace EcoTravel_DAL.Services
                 using (SqlCommand command = cnx.CreateCommand())
                 {
                     command.CommandText = @"INSERT INTO [Proprietaire] ([idProprietaire]) VALUES (@idClient)";
-  
-                    //command.Parameters.AddWithValue("idClient", entity.idProprietaire);
-                    // d' ou provient l'id du client ? Quand pn clique sur ajouter logement on prend l'id du Client connecté à la session?
+
+                    command.Parameters.AddWithValue("idClient", entity.idProprietaire);
 
                     cnx.Open();
 
                     return (int)command.ExecuteScalar();
+                }
+            }
+        }
+
+        public int? CheckPassword(string email, string password)
+        {
+            using (SqlConnection cnx = new SqlConnection(ConnectionString))
+            {
+                using (SqlCommand command = cnx.CreateCommand())
+                {
+                    command.CommandText = "SP_Client_Check";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("email", email);
+                    command.Parameters.AddWithValue("password", password);
+
+                    cnx.Open();
+
+                    object result = command.ExecuteScalar();
+                    return (result is DBNull) ? null : (int?)result;
                 }
             }
         }

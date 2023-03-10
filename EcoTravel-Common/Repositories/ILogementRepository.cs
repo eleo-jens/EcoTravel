@@ -10,6 +10,6 @@ namespace EcoTravel_Common.Repositories
     public interface ILogementRepository<TEntity, TId>: IRepository<TEntity, TId> where TEntity : ILogement
     {
         IEnumerable<TEntity> GetByProprietaire(int idProprietaire);
-        //IEnumerable<TEntity> GetByType(int idType);
+        IEnumerable<TEntity> GetByCategorie(int idCategorie);
     }
 }

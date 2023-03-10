@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using EcoTravel_MVC.Handlers;
 
 namespace EcoTravel_MVC
 {
@@ -32,14 +34,36 @@ namespace EcoTravel_MVC
             services.AddScoped<IClientRepository<BO.Client, int>, BS.ClientService>();
 
             services.AddScoped<IProprietaireRepository<DO.Proprietaire, int>, DS.ProprietaireService>();
-            //services.AddScoped<IProprietaireRepository<BO.Proprietaire, int>, BS.ProprietaireService>();
+            services.AddScoped<IProprietaireRepository<BO.Proprietaire, int>, BS.ProprietaireService>();
 
             services.AddScoped<ILogementRepository<DO.Logement, int>, DS.LogementService>();
             services.AddScoped<ILogementRepository<BO.Logement, int>, BS.LogementService>();
 
-            //services.AddScoped<ITypeRepository<DO.Type, int>, DS.TypeService>();
-            //services.AddScoped<ITypeRepository<BO.Type, int>, BS.TypeService>();
+            services.AddScoped<ICategorieRepository<DO.Categorie, int>, DS.CategorieService>();
+            services.AddScoped<ICategorieRepository<BO.Categorie, int>, BS.CategorieService>();
 
+            services.AddScoped<SessionManager>();
+
+            #endregion
+
+            #region Création du Cookie de session
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "EcoTravel.Session";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(50);
+            });
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+            #endregion
+
+            #region Service d'accessibilité du HTTPCONTEXT par injection de dépendance
+            services.AddHttpContextAccessor();
             #endregion
 
             services.AddControllersWithViews();
@@ -56,6 +80,11 @@ namespace EcoTravel_MVC
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            // pour la SESSION
+            app.UseSession();
+            app.UseCookiePolicy();
+
             app.UseStaticFiles();
 
             app.UseRouting();

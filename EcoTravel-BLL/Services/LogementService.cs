@@ -47,5 +47,10 @@ namespace EcoTravel_BLL.Services
         {
             return _repository.GetByProprietaire(idProprietaire).Select(e => e.ToBLL());    
         }
+
+        public IEnumerable<Logement> GetByCategorie(int idCategorie)
+        {
+            return _repository.GetByCategorie(idCategorie).Select(e => e.ToBLL());
+        }
     }
 }

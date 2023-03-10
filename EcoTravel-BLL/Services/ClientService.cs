@@ -28,5 +28,10 @@ namespace EcoTravel_BLL.Services
         {
             return _repository.Insert(entity.ToDAL());
         }
+
+        public int? CheckPassword(string email, string password)
+        {
+            return _repository.CheckPassword(email, password);
+        }
     }
 }

@@ -76,7 +76,7 @@ namespace EcoTravel_BLL.Mapper
                 codePostal= entity.codePostal,
                 pays= entity.pays,
                 dateAjout= entity.dateAjout,
-                idType = entity.idType,
+                idCategorie = entity.idCategorie,
                 idProprietaire= entity.idProprietaire
             };
         }
@@ -113,7 +113,7 @@ namespace EcoTravel_BLL.Mapper
                 codePostal = entity.codePostal,
                 pays = entity.pays,
                 dateAjout = entity.dateAjout,
-                idType = entity.idType,
+                idCategorie = entity.idCategorie,
                 idProprietaire = entity.idProprietaire
             };
         }
@@ -150,6 +150,18 @@ namespace EcoTravel_BLL.Mapper
                 telephone = entity.telephone,
                 pays = entity.pays
             };
+        }
+        #endregion
+
+        #region Categorie 
+        public static BO.Categorie ToBLL (this DO.Categorie entity)
+        {
+            if (entity is null) return null;
+            return new BO.Categorie()
+            {
+                idCategorie = entity.idCategorie,
+                nom = entity.nom
+            }; 
         }
         #endregion
     }
