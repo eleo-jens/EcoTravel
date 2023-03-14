@@ -13,10 +13,11 @@ namespace EcoTravel_MVC.Controllers
 {
     public class ProprietaireController : Controller
     {
-
+        private readonly IProprietaireRepository<Proprietaire, int> _service;
         private readonly ILogementRepository<Logement, int> _logementService;
-        public ProprietaireController(ILogementRepository<Logement, int> logementService)
+        public ProprietaireController(IProprietaireRepository<Proprietaire, int> service, ILogementRepository<Logement, int> logementService)
         {
+            _service = service; 
             _logementService = logementService;
         }
 
@@ -26,13 +27,16 @@ namespace EcoTravel_MVC.Controllers
             return View();
         }
 
-        // GET: ProprietaireController/Details/5
+        // GET: Proprietaire/Details/5
         public ActionResult Details(int id)
         {
-            //ATTENTION: erreur avec la vue partielle qui se déclenche 
-            ProprietaireDetails model = new ProprietaireDetails();
-            model.logements = _logementService.GetByProprietaire(id).Select(e => e.ToListItem());
-            return View(model);
+            //if (_client)
+            //else
+            //{
+                ProprietaireDetails model = _service.Get(id).ToProprietaireDetails();
+                model.logements = _logementService.GetByProprietaire(id).Select(e => e.ToListItem());
+                return View(model);
+            //}
         }
 
         // GET: ProprietaireController/Create

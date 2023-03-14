@@ -14,10 +14,12 @@ namespace EcoTravel_MVC.Controllers
     public class ClientController : Controller
     {
         private readonly IClientRepository<Client, int> _service;
+        private readonly IProprietaireRepository<Proprietaire, int> _proprietaireService;
 
-        public ClientController(IClientRepository<Client, int> service)
+        public ClientController(IClientRepository<Client, int> service, IProprietaireRepository<Proprietaire, int> proprietaireService)
         {
             _service = service;
+            _proprietaireService = proprietaireService;
         }
         // GET: ClientController
         public ActionResult Index()
@@ -28,8 +30,18 @@ namespace EcoTravel_MVC.Controllers
         // GET: ClientController/Details/5
         public ActionResult Details(int id)
         {
-            ClientDetails model = _service.Get(id).ToDetails();
-            return View(model);
+            // tentative pour rediriger vers l'action proprietaire, si le client est un proprietaire (Erreur: mon Get du proprietaire service est configuré pour récupérer aussi la liste des logements, qui est vide lorsqu'il n'y a pas de propriétaire possédant cet id)
+
+            /*
+            if (_proprietaireService.Get(id).idClient == id)
+            {
+                return RedirectToAction("Details", "Proprietaire", new { id = id });
+            }
+            else
+            { */
+                ClientDetails model = _service.Get(id).ToDetails();
+                return View(model);
+            //}
         }
 
         // GET: ClientController/Create

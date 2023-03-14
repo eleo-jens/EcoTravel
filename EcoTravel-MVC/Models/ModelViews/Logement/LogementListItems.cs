@@ -13,28 +13,31 @@ namespace EcoTravel_MVC.Models.ModelViews.Logement
         [ScaffoldColumn(false)]
         public int idLogement { get; set; }
 
-        [Required(ErrorMessage = ConstantMessages.errorMessage)]
-        [DisplayName("Nom du logement: *")]
-        [MinLength(2)]
-        [MaxLength(50)]
+        [DisplayName("Nom du logement")]
         public string nom { get; set; }
 
-        [Required(ErrorMessage = ConstantMessages.errorMessage)]
-        [DisplayName("Courte description du logement (max 255 caractères: *")]
-        [MinLength(2)]
-        [MaxLength(255)]
+        [DisplayName("Prix par personne par nuit (euro)")]
         public decimal prixNuitPersonne { get; set; }
 
-        [Required(ErrorMessage = ConstantMessages.errorMessage)]
-        [DisplayName("Capacité (nombre de personnes): *")]
-        [Range(1, 255, ErrorMessage = "Entre 1 et 255 personnes")]
+        [DisplayName("Capacité")]
         public int capacite { get; set; }
 
-        [Required(ErrorMessage = ConstantMessages.errorMessage)]
-        [DisplayName("Courte description du logement (max 255 caractères: *")]
-        [MinLength(2)]
-        [MaxLength(255)]
+        [DisplayName("Courte description du logement")]
         public string descriptionCourte { get; set; }
+
+        [DisplayName("Catégorie")]
+        public string categorie { get; set; }
+
+        [DisplayName("Proprietaire")]
+        public string proprietaire { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int idProprietaire { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int idCategorie { get; set; }
+
+
 
     }
 }

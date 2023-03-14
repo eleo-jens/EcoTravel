@@ -1,0 +1,62 @@
+﻿@inject ICategorieRepository<Categorie, int> categorieService;
+@using EcoTravel_BLL.Entities;
+@using EcoTravel_Common.Repositories;
+@using EcoTravel_MVC.Handlers;
+@using EcoTravel_MVC.Models.ModelViews.Categorie;
+@using EcoTravel_MVC.Models.ModelViews.Logement;
+
+@model EcoTravel_MVC.Models.ModelViews.Logement.LogementSearch
+
+@{
+    ViewData["Title"] = "SearchByCategory";
+    IEnumerable<CategorieDetails> categories = categorieService.Get().Select(e => e.ToDetails());
+}
+
+<h1>Rechercher un logement</h1>
+
+<h4>Sélectionnez une catégorier</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SearchByCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label required="required">Catégorie de logement: </label>
+                @Html.DropDownListFor(model => model.idCategorie,
+             categories.Select(e => new SelectListItem { Text = e.nom, Value = e.idCategorie.ToString() }),
+             "Selectionnez une catégorie (obligatoire)", new { required = "required" })
+            </div>
+            <div>
+                <ul>
+                    @if (Model.logements.Count() == 0)
+                    {
+                        <h4>Aucun résultat trouvé...</h4>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model.logements)
+                        {
+                            <li>
+                                <h4>@item.nom</h4>
+                                <p>@item.capacite</p>
+                                <p>@item.prixNuitPersonne</p>
+                                <p>@item.descriptionCourte</p>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

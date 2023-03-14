@@ -13,61 +13,66 @@ namespace EcoTravel_MVC.Models.ModelViews.Logement
         [ScaffoldColumn(false)]
         public int idLogement { get; set; }
 
-        
-        [DisplayName("Nom du logement: *")]
+        [DisplayName("Nom du logement: ")]
         public string nom { get; set; }
-        [DisplayName("Courte description du logement (max 255 caractères: *")]
+        [DisplayName("Courte description du logement: ")]
 
         public string descriptionCourte { get; set; }
-        [DisplayName("Longue description du logement: *")]
+        [DisplayName("Longue description du logement: ")]
         public string descriptionLongue { get; set; }
-        [DisplayName("Nombre de chambre (il en faut minimum 1!): *")]
+        [DisplayName("Nombre de chambre: ")]
         public int nbChambres { get; set; }
-        [DisplayName("Nombre de salle de bain (il en faut minimum 3!): *")]
+        [DisplayName("Nombre de salle de bain: ")]
         public int nbPieces { get; set; }
-        [DisplayName("Nombre de salle de bain (il en faut minimum 1!): *")]
+        [DisplayName("Nombre de salle de bain: ")]
         public int nbSDB { get; set; }
-        [DisplayName("Nombre de WC (il en faut minimum 1!): *")]
+        [DisplayName("Nombre de WC: ")]
         public int nbWC { get; set; }
-        [DisplayName("Balcon: *")]
-        public bool balcon { get; set; } = true;
-        [DisplayName("Air conditionnée: *")]
-        public bool airco { get; set; } = true;
-        [DisplayName("Wifi: *")]
-        public bool wifi { get; set; } = true;
-        [DisplayName("Minibar: *")]
-        public bool minibar { get; set; } = true;
-        [DisplayName("Animaus admis: *")]
-        public bool animauxAdmis { get; set; } = true;
-        [DisplayName("Piscine: *")]
-        public bool piscine { get; set; } = true;
-        [DisplayName("Parking: *")]
-        public bool parking { get; set; } = true;
-        [DisplayName("Voiturier: *")]
-        public bool voiturier { get; set; } = true;
-        [DisplayName("Room Service: *")]
-        public bool roomService { get; set; } = true;
-        [DisplayName("Spa: *")]
-        public bool spa { get; set; } = true;
-        [DisplayName("Prix par nuit par personne (euros): *")]
+        [DisplayName("Balcon: ")]
+        public bool balcon { get; set; } 
+        [DisplayName("Air conditionnée: ")]
+        public bool airco { get; set; } 
+        [DisplayName("Wifi: ")]
+        public bool wifi { get; set; } 
+        [DisplayName("Minibar: ")]
+        public bool minibar { get; set; }
+        [DisplayName("Animaus admis: ")]
+        public bool animauxAdmis { get; set; } 
+        [DisplayName("Piscine: ")]
+        public bool piscine { get; set; } 
+        [DisplayName("Parking: ")]
+        public bool parking { get; set; }
+        [DisplayName("Voiturier: ")]
+        public bool voiturier { get; set; }
+        [DisplayName("Room Service: ")]
+        public bool roomService { get; set; } 
+        [DisplayName("Spa: ")]
+        public bool spa { get; set; } 
+        [DisplayName("Prix par nuit par personne (euros): ")]
 
         public decimal prixNuitPersonne { get; set; }
-        [DisplayName("Capacité (nombre de personnes): *")]
+        [DisplayName("Capacité (nombre de personnes): ")]
         public int capacite { get; set; }
-        [DisplayName("Longitude: *")]
+        [DisplayName("Longitude: ")]
         public decimal longitude { get; set; }
-        [DisplayName("Latitude: *")]
+        [DisplayName("Latitude: ")]
         public decimal latitude { get; set; }
-        [DisplayName("Rue: *")]
+        [DisplayName("Rue: ")]
         public string rue { get; set; }
-        [DisplayName("Numéro: *")]
+        [DisplayName("Numéro: ")]
         public string numero { get; set; }
-        [DisplayName("Code postal: *")]
+        [DisplayName("Code postal: ")]
         public string codePostal { get; set; }
-        [DisplayName("Pays: *")]
+        [DisplayName("Pays: ")]
         public string pays { get; set; }
 
-        // Ici je dois récupérer la liste des categories
+        // Ici je dois afficher le nom de la catégorie
+        // et le nom du proprietaire
+        [DisplayName("Categorie: ")]
+        public string categorie { get; set; }
+        [DisplayName("Proprietaire: ")]
+        public string nomProprietaire { get; set; }
+
         [ScaffoldColumn(false)]
         public int idCategorie { get; set; }
         [ScaffoldColumn(false)]

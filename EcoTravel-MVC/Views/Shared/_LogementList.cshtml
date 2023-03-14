@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<EcoTravel_MVC.Models.ModelViews.Logement.LogementListItems>
 
-@foreach (var item in Model)
-{
-    <div>
-        <div>
-            <h4>@item.nom</h4>
-            <p>@item.capacite</p>
-            <p>@item.prixNuitPersonne</p>
-            <p>@item.descriptionCourte</p>
-        </div>
-    </div>
-}
+<h3>Mes logements ajoutés</h3>
+<ul>
+    @foreach (var item in Model)
+    {
+            <li>
+                <h4>@item.nom</h4>
+                <p>@item.capacite</p>
+                <p>@item.prixNuitPersonne</p>
+                <p>@item.descriptionCourte</p>
+            </li>
+    }
+</ul>

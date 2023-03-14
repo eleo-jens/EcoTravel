@@ -4,11 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Tous nos logements</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -23,6 +20,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.descriptionCourte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.proprietaire)
             </th>
             <th></th>
         </tr>
@@ -43,9 +46,15 @@
                 @Html.DisplayFor(modelItem => item.descriptionCourte)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.categorie)
+            </td>
+            <td>
+                <a asp-controller="Proprietaire" asp-action="Details" asp-route-Id="@item.idProprietaire">
+                    @Html.DisplayFor(modelItem => item.proprietaire)
+                </a>
+            </td>
+            <td>
+                @Html.ActionLink("Voir le détail", "Details", new { id = item.idLogement })
             </td>
         </tr>
 }

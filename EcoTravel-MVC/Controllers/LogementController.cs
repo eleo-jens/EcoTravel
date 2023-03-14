@@ -2,6 +2,7 @@
 using EcoTravel_Common.Repositories;
 using EcoTravel_MVC.Handlers;
 using EcoTravel_MVC.Models.ModelViews.Logement;
+using EcoTravel_MVC.Models.ModelViews.Proprietaire;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -30,13 +31,25 @@ namespace EcoTravel_MVC.Controllers
         // GET: LogementController
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<LogementListItems> model = _service.Get().Select(e => e.ToListItem());
+            model = model.Select(item => {
+                item.categorie = _categorieService.Get(item.idCategorie).ToDetails().nom;
+                ProprietaireDetails proprietaire = _proprietaireService.Get(item.idProprietaire).ToProprietaireDetails();
+                item.proprietaire = proprietaire.prenom + " " + proprietaire.nom;
+                return item;
+            } );
+            
+            return View(model);
         }
 
         // GET: LogementController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            LogementDetails model = _service.Get(id).ToDetails();
+            ProprietaireDetails proprietaire = _proprietaireService.Get(model.idProprietaire).ToProprietaireDetails();
+            model.nomProprietaire = proprietaire.prenom + " " + proprietaire.nom;
+            model.categorie = _categorieService.Get(model.idCategorie).ToDetails().nom;
+            return View(model);
         }
 
         // GET: LogementController/Create
@@ -79,9 +92,8 @@ namespace EcoTravel_MVC.Controllers
                 form.idProprietaire = _sessionManager.CurrentUser.idUser;
                 int id = _service.Insert(form.ToBLL());
 
-                return RedirectToAction("Details", "Client", new { id = _sessionManager.CurrentUser.idUser });
-                // Je voulais renvoyer vers la détail du compte du proprietaire avec inclus une liste de ses logements en vue partielle, mais la vue partielle _LogementList génère des erreurs
-                //return RedirectToAction("Details", "Proprietaire", new { id = _sessionManager.CurrentUser.idUser });
+                // Je renvoie vers la détail du compte du proprietaire avec inclus une liste de ses logements en vue partielle
+                return RedirectToAction("Details", "Proprietaire", new { id = _sessionManager.CurrentUser.idUser });
             }
         }
 
@@ -124,6 +136,32 @@ namespace EcoTravel_MVC.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        // GET: LogementController/Search
+        [Route("Logement/Search")]
+        public ActionResult SearchByCategory()
+        {
+            LogementSearch model = new LogementSearch();
+            model.logements = new List<LogementListItems>();
+            return View(model);
+        }
+
+        //POST: LogementController/Search
+       [HttpPost]
+       [Route("Logement/Search")]
+       [ValidateAntiForgeryToken]
+        public ActionResult SearchByCategory(LogementSearch form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(form);
+            }
+            else
+            {
+                form.logements = _service.GetByCategorie(form.idCategorie).Select(e => e.ToListItem());
+                return View(form);
             }
         }
     }
